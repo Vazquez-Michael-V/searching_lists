@@ -1,9 +1,8 @@
 import json
 
 def get_search_words(search_words):
-    """Takes an empty list as an argument."""
-#Get search words from the user. Search words are then put in a list.
-    #search_words = []
+    """Takes an empty list as an argument and asks to enter search words."""
+#Get search words from the user. Search words are then put in a list.    
     ask_user_for_search_words = "What would you like to search for? Type 'Search Now' once all search items have been entered."
     print(ask_user_for_search_words)
     while True:
@@ -36,6 +35,3 @@ def get_search_words(search_words):
             print(ask_user_for_search_words)
             continue
 
-#search_words = []
-#get_search_words(search_words)
-#print(search_words)
