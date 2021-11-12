@@ -35,3 +35,26 @@ def get_search_words(search_words):
             print(ask_user_for_search_words)
             continue
 
+def get_search_file():
+    """Takes a text file and stores it as the user's list of search words."""
+    user_search_file = input("Please enter the text file name containing your list of search words. Please remember the extension '.txt' when entering file name.\n")
+    #Try to open the user's file a maximum of 5 times.
+    attempts = 5
+    while attempts !=0 or file_found == False:
+        try:
+            with open(user_search_file, 'r') as usf:
+                pass
+        except FileNotFoundError:
+            attempts -=1
+            file_found = False
+            if attempts == 0: #Program ends after 5 FileNotFoundError errors.
+                print("Please check the directory and obtain a '.txt' file name.")
+                quit()
+            print(f"Valid file names are of the form 'filename.txt'. Please check directory and enter a vaild file name.\n\tYou have {attempts} attempts remaining.")
+            user_search_file = input("Enter the name of the .txt file you would like to search. Be sure to include the file extension '.txt'\n")       
+        else:
+            with open(user_search_file, 'r') as usf:
+                search_words = usf.readlines()
+                search_words = [s.rstrip() for s in search_words]      
+            file_found = True
+            return search_words
